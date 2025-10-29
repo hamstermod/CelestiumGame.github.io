@@ -1,0 +1,10 @@
+body{
+  background-color: #02041c;
+  color: white;
+}
+/*.marketItem{*/
+/*  transition: 1s;*/
+/*}*/
+.marketItem:hover{
+  transform: scale(1.1);
+}
