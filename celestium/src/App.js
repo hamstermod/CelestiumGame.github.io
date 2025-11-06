@@ -23,7 +23,7 @@ function App() {
     const [updateMe, setUpdateMe] = useState(0);
     const [displayLoadingPage, setDisplayLoadingPage] = useState(true);
     const sendReq = async (path, paramsObject = {}) => {
-        const url = "http://localhost:3001/" + path;
+        const url = "https://celestiumserver-production.up.railway.app/" + path;
         try {
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
