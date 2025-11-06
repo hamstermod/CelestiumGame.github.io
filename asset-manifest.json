@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/CelestiumGame.github.io/static/css/main.b56c1fac.css",
+    "main.js": "/CelestiumGame.github.io/static/js/main.ad13dbd8.js",
+    "static/js/453.92565ef2.chunk.js": "/CelestiumGame.github.io/static/js/453.92565ef2.chunk.js",
+    "static/media/loading.png": "/CelestiumGame.github.io/static/media/loading.165f368e84fa2af16d50.png",
+    "static/media/star.svg": "/CelestiumGame.github.io/static/media/star.4c1b78957147d209e0471b9ca3b0a9b9.svg",
+    "index.html": "/CelestiumGame.github.io/index.html",
+    "main.b56c1fac.css.map": "/CelestiumGame.github.io/static/css/main.b56c1fac.css.map",
+    "main.ad13dbd8.js.map": "/CelestiumGame.github.io/static/js/main.ad13dbd8.js.map",
+    "453.92565ef2.chunk.js.map": "/CelestiumGame.github.io/static/js/453.92565ef2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b56c1fac.css",
+    "static/js/main.ad13dbd8.js"
+  ]
+}
