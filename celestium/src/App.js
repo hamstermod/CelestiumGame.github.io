@@ -280,21 +280,17 @@ function App() {
             <div style={{width:'100vw', height:'100vh', position: "fixed", top: 0, left: 0,zIndex: 9999, backgroundImage: `url("${loading}")`, backgroundSize: "cover", backgroundPosition: "center", display: (displayLoadingPage ?"block" : "none")}}>
             </div>
             <div className="container" style={{ paddingBottom: "60px" }}>
+                {currentPage === "miners" ? <Miners
+                    updateMe={updateMe}
+                    setUpdateMe={setUpdateMe}
+                    sendReq={sendReq}
+                    stars={stars}
+                    sendNotification={sendNotification}
+                    userReferralCount={userReferralCount}
+                    userInit={userInit}
+                    setCurrentPage={setCurrentPage}
+                /> : ''}
                 <Routes>
-                    <Route path="/CelestiumGame.github.io" element={
-                        <Miners
-                            updateMe={updateMe}
-                            setUpdateMe={setUpdateMe}
-                            sendReq={sendReq}
-                            stars={stars}
-                            sendNotification={sendNotification}
-                            userReferralCount={userReferralCount}
-                            userInit={userInit}
-                            setCurrentPage={setCurrentPage}
-                        />
-                    } />
-
-                    <Route path="/miners" element={<Miners updateMe={updateMe} setUpdateMe={setUpdateMe} sendReq={sendReq}  stars={stars} sendNotification={sendNotification} userReferralCount={userReferralCount} userInit={userInit}  setCurrentPage={setCurrentPage} />} />
                     <Route path="/market" element={<Market stars={stars}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} sendReq={sendReq}  setCurrentPage={setCurrentPage} />} />
                     <Route path="/profile" element={<Profile sendReq={sendReq}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} miners={miners} userInfo={userInfo}  setCurrentPage={setCurrentPage} init={userInit} />} />
                 </Routes>
