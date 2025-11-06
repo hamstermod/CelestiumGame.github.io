@@ -281,7 +281,7 @@ function App() {
             </div>
             <div className="container" style={{ paddingBottom: "60px" }}>
                 <Routes>
-                    <Route index element={
+                    <Route path="/CelestiumGame.github.io" element={
                         <Miners
                             updateMe={updateMe}
                             setUpdateMe={setUpdateMe}
