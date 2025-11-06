@@ -281,7 +281,19 @@ function App() {
             </div>
             <div className="container" style={{ paddingBottom: "60px" }}>
                 <Routes>
-                {/*    <Route path="/" element={<Miners updateMe={updateMe} setUpdateMe={setUpdateMe} sendReq={sendReq}  stars={stars} sendNotification={sendNotification} userReferralCount={userReferralCount} userInit={userInit}  setCurrentPage={setCurrentPage} />} />*/}
+                    <Route index element={
+                        <Miners
+                            updateMe={updateMe}
+                            setUpdateMe={setUpdateMe}
+                            sendReq={sendReq}
+                            stars={stars}
+                            sendNotification={sendNotification}
+                            userReferralCount={userReferralCount}
+                            userInit={userInit}
+                            setCurrentPage={setCurrentPage}
+                        />
+                    } />
+
                     <Route path="/miners" element={<Miners updateMe={updateMe} setUpdateMe={setUpdateMe} sendReq={sendReq}  stars={stars} sendNotification={sendNotification} userReferralCount={userReferralCount} userInit={userInit}  setCurrentPage={setCurrentPage} />} />
                     <Route path="/market" element={<Market stars={stars}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} sendReq={sendReq}  setCurrentPage={setCurrentPage} />} />
                     <Route path="/profile" element={<Profile sendReq={sendReq}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} miners={miners} userInfo={userInfo}  setCurrentPage={setCurrentPage} init={userInit} />} />
