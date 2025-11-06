@@ -11,7 +11,7 @@ import loading from "./images/loading.png";
 import { ReactComponent as Star } from "./images/star.svg";
 
 function App() {
-    const [currentPage, setCurrentPage] = useState("");
+    const [currentPage, setCurrentPage] = useState("miners");
     const [stars, setStars] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
     const [amount, setAmount] = useState("");
@@ -22,7 +22,6 @@ function App() {
     const [miners, setMinersData] = useState([]);
     const [updateMe, setUpdateMe] = useState(0);
     const [displayLoadingPage, setDisplayLoadingPage] = useState(true);
-    const navigate = useNavigate();
 
     const sendReq = async (path, paramsObject = {}) => {
         const url = "https://celestiumserver-production.up.railway.app/" + path;
@@ -69,6 +68,7 @@ function App() {
     }, [displayLoadingPage]);
     useEffect(() => {
         setDisplayLoadingPage(true);
+        setUpdateMe(updateMe + 1);
     }, [currentPage]);
     useEffect(() => {
         const fetchData = async () => {
@@ -130,7 +130,6 @@ function App() {
                 // console.log("Telegram WebApp initialized", tg);
             }
         };
-        navigate("/miners");
         // setCurrentPage("miners1")
     }, []);
     const handleTopUp = async  () => {
@@ -285,7 +284,7 @@ function App() {
             <div style={{width:'100vw', height:'100vh', position: "fixed", top: 0, left: 0,zIndex: 9999, backgroundImage: `url("${loading}")`, backgroundSize: "cover", backgroundPosition: "center", display: (displayLoadingPage ?"block" : "none")}}>
             </div>
             <div className="container" style={{ paddingBottom: "60px" }}>
-                {currentPage === "miners1" ? <Miners
+                {currentPage === "miners" ?   <Miners
                     updateMe={updateMe}
                     setUpdateMe={setUpdateMe}
                     sendReq={sendReq}
@@ -294,24 +293,20 @@ function App() {
                     userReferralCount={userReferralCount}
                     userInit={userInit}
                     setCurrentPage={setCurrentPage}
-                /> : ''}
-                <Routes>
-                    <Route path="/miners" element={ <Miners
-                        updateMe={updateMe}
-                        setUpdateMe={setUpdateMe}
-                        sendReq={sendReq}
-                        stars={stars}
-                        sendNotification={sendNotification}
-                        userReferralCount={userReferralCount}
-                        userInit={userInit}
-                        setCurrentPage={setCurrentPage}
-                    />} />
-                    <Route path="/market" element={<Market stars={stars}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} sendReq={sendReq}  setCurrentPage={setCurrentPage} />} />
-                    <Route path="/profile" element={<Profile sendReq={sendReq}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} miners={miners} userInfo={userInfo}  setCurrentPage={setCurrentPage} init={userInit} />} />
-                </Routes>
+                /> : currentPage === "market"  ? <Market stars={stars}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} sendReq={sendReq}  setCurrentPage={setCurrentPage} /> : currentPage === "profile" ? <Profile sendReq={sendReq}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} miners={miners} userInfo={userInfo}  setCurrentPage={setCurrentPage} init={userInit} /> : <Miners
+                    updateMe={updateMe}
+                    setUpdateMe={setUpdateMe}
+                    sendReq={sendReq}
+                    stars={stars}
+                    sendNotification={sendNotification}
+                    userReferralCount={userReferralCount}
+                    userInit={userInit}
+                    setCurrentPage={setCurrentPage}
+                />  }
+
             </div>
 
-            <Footer page={currentPage} />
+            <Footer page={currentPage} setCurrentPage={setCurrentPage} />
         </div>
     );
 }

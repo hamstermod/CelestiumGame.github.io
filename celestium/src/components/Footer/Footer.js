@@ -3,32 +3,32 @@ import "./style.css";
 import { FaCoins, FaStore, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Footer = ({ page }) => {
+const Footer = ({ page, setCurrentPage }) => {
     return (
         <footer className="footer">
-            <Link
-                to="/miners"
+            <p
+                onClick={() => setCurrentPage("miners")}
                 className={`footer-item ${page === "miners" ? "active" : ""}`}
             >
                 <FaCoins className="footer-icon" />
                 <span>Miners</span>
-            </Link>
+            </p>
 
-            <Link
-                to="/market"
+            <p
+                onClick={() => setCurrentPage("market")}
                 className={`footer-item ${page === "market" ? "active" : ""}`}
             >
                 <FaStore className="footer-icon" />
                 <span>Market</span>
-            </Link>
+            </p>
 
-            <Link
-                to="/profile"
+            <p
+                onClick={() => setCurrentPage("profile")}
                 className={`footer-item ${page === "profile" ? "active" : ""}`}
             >
                 <FaUser className="footer-icon" />
                 <span>Profile</span>
-            </Link>
+            </p>
         </footer>
     );
 };

@@ -3,8 +3,8 @@ import { FaUserFriends } from "react-icons/fa";
 import { ReactComponent as Star } from "../../images/star.svg";
 
 export default function Profile({ setCurrentPage, userInfo, userReferralCount, init, miners , sendReq, updateMe, setUpdateMe}) {
-    setCurrentPage("profile");
-    // console.log()
+
+    console.log(userInfo)
     const [popupMiner, setPopupMiner] = useState(null);
     const [claimedMiners, setClaimedMiners] = useState([]);
     const [copied, setCopied] = useState(false);
@@ -14,7 +14,7 @@ export default function Profile({ setCurrentPage, userInfo, userReferralCount, i
 
         let maxDay;
         let maxDayMili = 0;
-        let e = miners.reduce((a,e, i) => {
+        let e = miners?.reduce((a,e, i) => {
 
             let end = new Date(e.timeEnd);
             const mili = end - new Date(new Date().toISOString());
@@ -191,7 +191,7 @@ export default function Profile({ setCurrentPage, userInfo, userReferralCount, i
                     Inventory
                 </h4>
 
-                {miners.map((m) => {
+                {miners?.map((m) => {
                     const claimed = m.days > 0;
                     return (
                         <div
