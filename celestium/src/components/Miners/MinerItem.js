@@ -59,7 +59,7 @@ export default function StarMinerCard({
                 }}
             >
                 <img
-                    src={`/minersImages/miner${id}.png`}
+                    src={`${process.env.PUBLIC_URL}/minersImages/miner${id}.png`}
                     alt="Miner"
                     style={{
                         width: "100%",

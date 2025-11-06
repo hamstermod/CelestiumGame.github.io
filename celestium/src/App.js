@@ -60,7 +60,7 @@ function App() {
         if(displayLoadingPage === true){
             setTimeout(() => {
                 setDisplayLoadingPage(false);
-            }, 2000)
+            }, 3000)
 
         }
     }, [displayLoadingPage]);

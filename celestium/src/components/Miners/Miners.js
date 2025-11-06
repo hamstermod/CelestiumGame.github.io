@@ -54,6 +54,9 @@ export default ({ setCurrentPage, sendNotification, userReferralCount, userInit 
     useEffect(() => {
         async function f(){
             if(!userInit){
+                setTimeout(() => {
+                    f();
+                }, 1000)
                 return;
             }
             try {
