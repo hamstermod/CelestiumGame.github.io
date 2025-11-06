@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Footer from "./components/Footer/Footer";
-import {BrowserRouter, Routes, Route, createSearchParams, HashRouter} from "react-router-dom";
+import {BrowserRouter, Routes, Route, createSearchParams, HashRouter, useNavigate} from "react-router-dom";
 import Miners from "./components/Miners/Miners";
 import Market from "./components/Market/Market";
 import Profile from "./components/Profile/Profile";
@@ -11,7 +11,7 @@ import loading from "./images/loading.png";
 import { ReactComponent as Star } from "./images/star.svg";
 
 function App() {
-    const [currentPage, setCurrentPage] = useState("miners1");
+    const [currentPage, setCurrentPage] = useState("");
     const [stars, setStars] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
     const [amount, setAmount] = useState("");
@@ -22,6 +22,8 @@ function App() {
     const [miners, setMinersData] = useState([]);
     const [updateMe, setUpdateMe] = useState(0);
     const [displayLoadingPage, setDisplayLoadingPage] = useState(true);
+    const navigate = useNavigate();
+
     const sendReq = async (path, paramsObject = {}) => {
         const url = "https://celestiumserver-production.up.railway.app/" + path;
         try {
@@ -56,6 +58,7 @@ function App() {
             return { ok: false };
         }
     };
+    console.log(currentPage)
     useEffect(() => {
         if(displayLoadingPage === true){
             setTimeout(() => {
@@ -127,6 +130,8 @@ function App() {
                 // console.log("Telegram WebApp initialized", tg);
             }
         };
+        navigate("/miners");
+        // setCurrentPage("miners1")
     }, []);
     const handleTopUp = async  () => {
         const num = parseInt(amount);
