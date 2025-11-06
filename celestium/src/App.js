@@ -11,7 +11,7 @@ import loading from "./images/loading.png";
 import { ReactComponent as Star } from "./images/star.svg";
 
 function App() {
-    const [currentPage, setCurrentPage] = useState("miners");
+    const [currentPage, setCurrentPage] = useState("miners1");
     const [stars, setStars] = useState(0);
     const [showPopup, setShowPopup] = useState(false);
     const [amount, setAmount] = useState("");
@@ -280,7 +280,7 @@ function App() {
             <div style={{width:'100vw', height:'100vh', position: "fixed", top: 0, left: 0,zIndex: 9999, backgroundImage: `url("${loading}")`, backgroundSize: "cover", backgroundPosition: "center", display: (displayLoadingPage ?"block" : "none")}}>
             </div>
             <div className="container" style={{ paddingBottom: "60px" }}>
-                {currentPage === "miners" ? <Miners
+                {currentPage === "miners1" ? <Miners
                     updateMe={updateMe}
                     setUpdateMe={setUpdateMe}
                     sendReq={sendReq}
@@ -291,6 +291,7 @@ function App() {
                     setCurrentPage={setCurrentPage}
                 /> : ''}
                 <Routes>
+                    <Route path="/miners" element={<Market stars={stars}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} sendReq={sendReq}  setCurrentPage={setCurrentPage} />} />
                     <Route path="/market" element={<Market stars={stars}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} sendReq={sendReq}  setCurrentPage={setCurrentPage} />} />
                     <Route path="/profile" element={<Profile sendReq={sendReq}  updateMe={updateMe} setUpdateMe={setUpdateMe} sendNotification={sendNotification} userReferralCount={userReferralCount} miners={miners} userInfo={userInfo}  setCurrentPage={setCurrentPage} init={userInit} />} />
                 </Routes>
