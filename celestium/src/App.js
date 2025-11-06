@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Footer from "./components/Footer/Footer";
-import {BrowserRouter, Routes, Route, createSearchParams} from "react-router-dom";
+import {BrowserRouter, Routes, Route, createSearchParams, HashRouter} from "react-router-dom";
 import Miners from "./components/Miners/Miners";
 import Market from "./components/Market/Market";
 import Profile from "./components/Profile/Profile";
