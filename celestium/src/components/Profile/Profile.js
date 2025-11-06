@@ -214,7 +214,7 @@ export default function Profile({ setCurrentPage, userInfo, userReferralCount, i
                         >
                             <div className="d-flex align-items-center gap-3">
                                 <img
-                                    src={"/minersImages/miner" + m.minerImgId + ".png"}
+                                    src={ process.env.PUBLIC_URL + "/minersImages/miner" + m.minerImgId + ".png"}
                                     alt={m.name}
                                     style={{
                                         width: "60px",
