@@ -15,24 +15,24 @@ import diamondAnimation from "../../images/diamond.json";
 import ringAnimation from "../../images/ring.json";
 import { ReactComponent as Star } from "../../images/star.svg";
 
-export default function Market({ setCurrentPage }) {
+export default function Market({ setCurrentPage, sendNotification, userReferralCount, stars, sendReq, setUpdateMe, updateMe }) {
     const [show, setShow] = useState(false);
     const [selectedGift, setSelectedGift] = useState(null);
 
     setCurrentPage("market");
 
     const gifts = [
-        { id: 1, name: "Heart", animation: heartAnimation, price: 15 },
-        { id: 2, name: "Teddy Bear", animation: bearAnimation, price: 15 },
-        { id: 3, name: "Gift Box", animation: giftAnimation, price: 25 },
-        { id: 4, name: "Rose", animation: roseAnimation, price: 25 },
-        { id: 5, name: "Birthday Cake", animation: cakeAnimation, price: 50 },
-        { id: 6, name: "Bouquet", animation: bouquetAnimation, price: 50 },
-        { id: 7, name: "Rocket", animation: rocketAnimation, price: 50 },
-        { id: 8, name: "Champagne", animation: champagneAnimation, price: 50 },
-        { id: 9, name: "Trophy", animation: trophyAnimation, price: 100 },
-        { id: 10, name: "Ring", animation: ringAnimation, price: 100 },
-        { id: 11, name: "Diamond", animation: diamondAnimation, price: 100 }
+        { id: 0, name: "Heart", animation: heartAnimation, price: 15 },
+        { id: 1, name: "Teddy Bear", animation: bearAnimation, price: 15 },
+        { id: 2, name: "Gift Box", animation: giftAnimation, price: 25 },
+        { id: 3, name: "Rose", animation: roseAnimation, price: 25 },
+        { id: 4, name: "Birthday Cake", animation: cakeAnimation, price: 50 },
+        { id: 5, name: "Bouquet", animation: bouquetAnimation, price: 50 },
+        { id: 6, name: "Rocket", animation: rocketAnimation, price: 50 },
+        { id: 7, name: "Champagne", animation: champagneAnimation, price: 50 },
+        { id: 8, name: "Trophy", animation: trophyAnimation, price: 100 },
+        { id: 9, name: "Ring", animation: ringAnimation, price: 100 },
+        { id: 10, name: "Diamond", animation: diamondAnimation, price: 100 }
     ];
 
 
@@ -146,9 +146,27 @@ export default function Market({ setCurrentPage }) {
                             <button
                                 type="button"
                                 className="btn btn-light text-dark flex-fill ms-2"
-                                onClick={() => {
-                                    console.log(selectedGift.id);
+                                onClick={async () => {
                                     handleClose();
+                                    if(stars < selectedGift.price) {
+
+                                        sendNotification("Insufficient Balance");
+
+                                        return;
+                                    }
+                                    if(userReferralCount < 10) {
+                                        sendNotification("Minimum requirement: 10 referrals!");
+
+                                        return;
+                                    }
+                                    const data = await sendReq("buyGift", {id: selectedGift.id});
+                                    if(!(data.data.ok)) {
+                                        sendNotification(data.data.message);
+                                        return;
+                                    }
+                                    sendNotification("SUCCESS");
+                                    setUpdateMe(updateMe + 1);
+
                                 }}
                             >
                                 Buy

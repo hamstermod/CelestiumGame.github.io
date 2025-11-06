@@ -8,7 +8,7 @@ export default function StarMinerCard({
                                           setModalData,
                                           userReferralCount,
                                       }) {
-    const { price, name, time, img, type, requiredReferrals } = data;
+    const { price, name, timeDay, endEarn, id, type, requiredReferrals } = data;
 
     const isReferralItem = type === "referral";
     const canClaim = !isReferralItem || userReferralCount >= requiredReferrals;
@@ -59,7 +59,7 @@ export default function StarMinerCard({
                 }}
             >
                 <img
-                    src={img}
+                    src={`/minersImages/miner${id}.png`}
                     alt="Miner"
                     style={{
                         width: "100%",
@@ -87,6 +87,7 @@ export default function StarMinerCard({
                     {name}
                 </h5>
                 <p
+                    className="d-flex align-items-center"
                     style={{
                         margin: 0,
                         color: "rgba(180, 190, 255, 0.7)",
@@ -94,7 +95,7 @@ export default function StarMinerCard({
                         marginBottom: "12px",
                     }}
                 >
-                    {time}
+                    In {timeDay} days earn {endEarn}  <Star width={15} height={15} style={{ marginLeft: "5px" }} />
                 </p>
 
                 {/* Price / Referral Requirement */}

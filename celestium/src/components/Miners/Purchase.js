@@ -2,7 +2,7 @@
 import React from "react";
 import { ReactComponent as Star } from "../../images/star.svg";
 
-export default function PurchaseModal({ show, onClose, onConfirm, itemName, price }) {
+export default function PurchaseModal({ show, onClose, onConfirm, itemName, price, sendReq }) {
     if (!show) return null;
 
     const handleOverlayClick = (e) => {
