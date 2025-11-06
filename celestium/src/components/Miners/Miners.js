@@ -69,7 +69,7 @@ export default ({ setCurrentPage, sendNotification, userReferralCount, userInit 
             }
         }
         f();
-    }, [userInit, minerUpdate]);
+    }, [userInit, minerUpdate, updateMe]);
 
     const normalMiners = minersData.filter((m) => m.type === "normal");
     const referralMiners = minersData.filter((m) => m.type === "referral");
